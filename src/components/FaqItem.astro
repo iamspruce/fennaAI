@@ -1,0 +1,71 @@
+---
+// src/components/FaqItem.astro
+export interface Props {
+  question: string;
+}
+const { question } = Astro.props;
+---
+
+<details class="faq-item">
+  <summary>
+    <span>{question}</span>
+    <svg
+      class="icon"
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0'
+      0
+      24
+      24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <line x1="12" y1="5" x2="12" y2="19"></line>
+      <line x1="5" y1="12" x2="19" y2="12"></line>
+    </svg>
+  </summary>
+  <div class="answer">
+    <slot />
+  </div>
+</details>
+
+<style>
+  .faq-item {
+    border-bottom: 2px solid var(--gray-6);
+    padding: var(--space-m) 0;
+  }
+  .faq-item:first-of-type {
+    border-top: 2px solid var(--gray-6);
+  }
+  .faq-item summary {
+    list-style: none; /* Hide the default marker */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: var(--step-0);
+    font-weight: 500;
+    color: var(--gray-12);
+  }
+  .faq-item summary::-webkit-details-marker {
+    display: none; /* Hide marker in Chrome */
+  }
+  .faq-item .answer {
+    padding-top: var(--space-s);
+    line-height: 1.6;
+    color: var(--gray-11);
+  }
+  .faq-item .icon {
+    transition: transform 0.2s ease-in-out;
+    flex-shrink: 0;
+    margin-left: var(--space-s);
+  }
+  /* When the details element is open, rotate the plus icon */
+  .faq-item[open] > summary .icon {
+    transform: rotate(45deg);
+  }
+</style>

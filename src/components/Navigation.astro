@@ -1,0 +1,56 @@
+---
+// src/components/Navigation.astro
+const navItems = [
+  { href: "/", text: "Home" },
+  { href: "/features", text: "Features" },
+  { href: "/models", text: "Models" },
+  { href: "/pricing", text: "Pricing" },
+  { href: "/developers", text: "Developers" },
+];
+---
+
+<header>
+  <nav>
+    <ul>
+      {
+        navItems.map((item) => (
+          <li>
+            <a href={item.href}>{item.text}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
+
+<style>
+  header {
+    padding: var(--space-s) 0;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+  }
+  nav {
+    text-align: center;
+    margin: 0px auto;
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    gap: var(--space-s);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+  }
+
+  a {
+    font-size: calc(var(--step-0) * 0.7);
+  }
+
+  a:hover {
+    transform: translateY(-2px); /* Subtle lift effect */
+    border-bottom-color: var(--pink-11);
+  }
+</style>

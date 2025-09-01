@@ -1,0 +1,15 @@
+[build]
+  # Your Astro build command
+  command = "npm run build"
+  # The directory Astro builds to
+  publish = "dist"
+
+[functions]
+  # The directory where your serverless functions live
+  directory = "netlify/functions"
+
+# This part makes your function URLs clean, e.g., your-site.com/api/activate
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200

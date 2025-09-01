@@ -1,0 +1,500 @@
+---
+import { getImage } from "astro:assets";
+import FaqItem from "../components/FaqItem.astro";
+import Layout from "../layouts/Layout.astro";
+
+import desktopMockup from "../assets/desktop-mockup.png";
+import desktopMockupDark from "../assets/desktop-mockup-dark.png";
+import padMockup from "../assets/pad-mockup.png";
+import padMockupDark from "../assets/pad-mockup-dark.png";
+import mobileMockup from "../assets/mobile-mockup.png";
+import mobileMockupDark from "../assets/mobile-mockup-dark.png";
+
+// Use getImage to process each image and get its optimized attributes
+const optimizedDesktopLight = await getImage({
+  src: desktopMockup,
+  formats: ["avif", "webp"],
+});
+const optimizedDesktopDark = await getImage({
+  src: desktopMockupDark,
+  formats: ["avif", "webp"],
+});
+const optimizedPadLight = await getImage({
+  src: padMockup,
+  formats: ["avif", "webp"],
+});
+const optimizedPadDark = await getImage({
+  src: padMockupDark,
+  formats: ["avif", "webp"],
+});
+const optimizedMobileDark = await getImage({
+  src: mobileMockupDark,
+  formats: ["avif", "webp"],
+});
+---
+
+<Layout
+  title="FennaAI | Your AI. Trained By You. On Your Machine."
+  description="FennaAI gives you a private, personal AI that runs on your laptop, learns from your data, and stays completely under your control — no cloud, no compromises."
+>
+  <div class="page">
+    <!-- Hero Section -->
+    <div class="flex hero">
+      <div class="hero-text">
+        <h1>“Finally, AI you can train yourself.”</h1>
+      </div>
+      <div class="product-preview">
+        <picture>
+          {/* Desktop Sources */}
+          <source
+            media="(min-width: 1024px) and (prefers-color-scheme: dark)"
+            srcset={optimizedDesktopDark.src}
+          />
+          <source
+            media="(min-width: 1024px)"
+            srcset={optimizedDesktopLight.src}
+          />
+          {/* Tablet Sources */}
+          <source
+            media="(min-width: 768px) and (prefers-color-scheme: dark)"
+            srcset={optimizedPadDark.src}
+          />
+          <source media="(min-width: 768px)" srcset={optimizedPadLight.src} />
+          {/* Mobile Dark Source */}
+          <source
+            media="(prefers-color-scheme: dark)"
+            srcset={optimizedMobileDark.src}
+          />
+
+          {/* Fallback <img> element for mobile light and older browsers */}
+          <img
+            src={mobileMockup.src}
+            alt="App interface on a device"
+            class="mockup-main"
+          />
+        </picture>
+      </div>
+    </div>
+
+    <!-- Trust Badge -->
+    <div class="social-proof">
+      <p>✨ Join thousands exploring personal AI safely and privately.</p>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+
+      <FaqItem question="How does FennaAI work?">
+        <p>
+          FennaAI runs directly on your computer. You download an open-source AI
+          model and "teach" it with your personal or business data. Everything
+          stays local — your files never leave your machine. The AI adapts to
+          you, and you stay in full control.
+        </p>
+      </FaqItem>
+
+      <FaqItem question="Is my data safe?">
+        <p>
+          Absolutely. Since FennaAI works offline on your computer, your data
+          never goes to the cloud. We cannot access your files, your
+          conversations, or your models. Your AI is truly yours.
+        </p>
+      </FaqItem>
+
+      <FaqItem question="Do I need to know how to code?">
+        <p>
+          Not at all! FennaAI is designed for everyday users. The app guides you
+          through downloading a model, training it, and chatting — all without
+          writing a single line of code.
+        </p>
+      </FaqItem>
+
+      <FaqItem question="What are the system requirements?">
+        <p>
+          FennaAI runs on laptops and desktops of most modern specs. <br />
+          <strong>Minimum:</strong> modern multi-core CPU, 8GB RAM <br />
+          <strong>Recommended:</strong> 16GB RAM and a GPU for smoother training.
+          <br />
+          The app will automatically suggest models that fit your system.
+        </p>
+      </FaqItem>
+
+      <FaqItem question="Can I use FennaAI offline?">
+        <p>
+          Yes! Once installed, FennaAI works completely offline. You don’t need
+          an internet connection to chat with your AI or train it on your data.
+        </p>
+      </FaqItem>
+
+      <FaqItem question="Which devices does FennaAI support?">
+        <p>
+          Currently, we support <strong>macOS, Windows, and Linux</strong>.
+          Mobile versions and Gmail integration are planned for the near future.
+        </p>
+      </FaqItem>
+
+      <FaqItem question="How much does FennaAI cost?">
+        <p>
+          The core app is free to download. Since you run everything locally,
+          there are no hidden subscription fees. Some advanced features may be
+          offered later, but FennaAI will always prioritize a free, private
+          experience.
+        </p>
+      </FaqItem>
+
+      <FaqItem question="What kind of data can I train my AI on?">
+        <p>
+          Anything personal or work-related — documents, emails, notes, business
+          files, etc. FennaAI helps your AI become more useful for your tasks
+          while keeping everything private.
+        </p>
+      </FaqItem>
+
+      <FaqItem question="Will it slow down my computer?">
+        <p>
+          FennaAI is designed to adapt to your system. Some models are more
+          resource-intensive than others, but the app recommends the best
+          options for your hardware so you get a smooth experience.
+        </p>
+      </FaqItem>
+
+      <FaqItem question="How do updates work?">
+        <p>
+          We regularly release updates to improve performance, add features, and
+          support new models. You’ll be notified in-app and can install updates
+          with a single click.
+        </p>
+      </FaqItem>
+
+      <FaqItem question="What if I run into problems?">
+        <p>
+          We’re building a support community where users share tips, model
+          recommendations, and guides. You’ll also be able to reach out directly
+          for help if needed.
+        </p>
+      </FaqItem>
+    </section>
+
+    <!-- Secondary Download Section -->
+    <div class="download-section">
+      <div class="download-group" aria-label="FennaAI App Download">
+        <a href="#" id="os-download-link" class="download-primary">
+          <span id="os-icon" class="icon"></span>
+          <span class="text-content">
+            <span id="os-text">Download FennaAI</span>
+            <small id="os-details">Detecting your OS...</small>
+          </span>
+        </a>
+
+        <details class="dropdown">
+          <summary
+            class="download-secondary"
+            aria-label="Show other download options"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="chevron"
+            >
+              <path d="m6 9 6 6 6-6"></path>
+            </svg>
+          </summary>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="/download/macos">macOS <small>(Apple Silicon)</small></a>
+            </li>
+            <li>
+              <a href="/download/windows">Windows <small>(x64)</small></a>
+            </li>
+            <li><a href="/download/linux">Linux <small>(.deb)</small></a></li>
+          </ul>
+        </details>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // Smarter OS Detection Script
+  document.addEventListener("DOMContentLoaded", () => {
+    const downloadLink = document.getElementById("os-download-link");
+    const osIcon = document.getElementById("os-icon");
+    const osText = document.getElementById("os-text");
+    const osDetails = document.getElementById("os-details");
+    const downloadGroup = document.querySelector(".download-group");
+
+    if (!downloadLink) return;
+
+    const platform = navigator.platform.toLowerCase();
+
+    // Platform details map
+    const platforms = {
+      macos: {
+        name: "macOS",
+        href: "/download/macos",
+        details: "v1.2.3 • Apple Silicon",
+        icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.25 2.01l-.22.22c-1.33 1.33-2.08 3.03-2.22 4.79l.21-.03c1.68-.31 3.33-.96 4.86-1.95l.22-.14c.2-.13.38-.26.54-.38a10.2 10.2 0 00-3.4-2.58zM15.42 7.52c-1.55.98-3.23 1.64-4.98 1.95l-.23.04a5.8 5.8 0 00-1.8 1.12 5.4 5.4 0 00-1.6 3.14c.05.4.12.8.22 1.18.2.78.5 1.55.88 2.3.58 1.14 1.25 2.2 2.07 3.12l.18.2c.42.48.88.92 1.38 1.32l.25.2c.26.2.53.4.82.58a.7.7 0 00.8-.02l.18-.12c1.4-1.02 2.6-2.3 3.4-3.88.47-.9.8-1.88.92-2.92a6.3 6.3 0 00-1.34-4.32 6.5 6.5 0 00-4.2-2.9z"></path></svg>`,
+      },
+      windows: {
+        name: "Windows",
+        href: "/download/windows",
+        details: "v1.2.3 • Windows x64",
+        icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M3,12V6.75l6.75-2.25v7.5H3z M11.25,12V4.5l9.75,3.25V12H11.25z M3,13.5h6.75v7.5L3,18.75V13.5z M11.25,13.5h9.75v5.25L11.25,22V13.5z"></path></svg>`,
+      },
+      linux: {
+        name: "Linux",
+        href: "/download/linux",
+        details: "v1.2.3 • Debian",
+        icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.41,0-8-3.59-8-8s3.59-8,8-8s8,3.59,8,8S16.41,20,12,20z M12,6c-3.31,0-6,2.69-6,6s2.69,6,6,6s6-2.69,6-6S15.31,6,12,6z M12,16c-2.21,0-4-1.79-4-4s1.79-4,4-4s4,1.79,4,4S14.21,16,12,16z"></path></svg>`,
+      },
+    };
+
+    let detectedOS = null;
+    if (platform.includes("mac")) detectedOS = "macos";
+    else if (platform.includes("win")) detectedOS = "windows";
+    else if (platform.includes("linux")) detectedOS = "linux";
+
+    if (detectedOS && platforms[detectedOS]) {
+      const os = platforms[detectedOS];
+      downloadLink.href = os.href;
+      osIcon.innerHTML = os.icon;
+      osText.textContent = `Download for ${os.name}`;
+      osDetails.textContent = os.details;
+      downloadGroup.classList.add(`os-${detectedOS}`);
+    } else {
+      osText.textContent = "Download Now";
+      osDetails.textContent = "View all platforms";
+    }
+  });
+</script>
+
+<style>
+  /* User's existing styles - untouched */
+  .page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+    padding: var(--space-s);
+  }
+  h1 {
+    text-align: center;
+    font-size: var(--step-5);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.04em;
+  }
+  .flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+  }
+  .social-proof {
+    text-align: center;
+    font-size: var(--step-0);
+    color: var(--gray-11);
+  }
+  /* --- */
+
+  .product-preview img,
+  .product-preview picture {
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0px 25px 50px rgba(0, 0, 0, 0.5));
+  }
+
+  .download-section {
+    position: fixed;
+    bottom: var(--space-s);
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-xl), var(--space-l);
+    color: var(--gray-1);
+  }
+
+  .download-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 999px;
+    background: var(--gray-12);
+    border: 1px solid var(--gray-11);
+    box-shadow:
+      0 10px 30px rgba(0, 0, 0, 0.2),
+      inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    color: var(--gray-1);
+    width: 60%;
+  }
+
+  .download-group:hover {
+    border-color: var(--gray-9);
+    box-shadow:
+      0 12px 35px rgba(0, 0, 0, 0.3),
+      inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }
+
+  /* Base styles for both button parts */
+  .download-primary,
+  .download-secondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 56px; /* Consistent height */
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+
+  /* Main download link */
+  .download-primary {
+    gap: 0.75rem;
+    padding: var(--space-s) var(--space-xs);
+
+    text-decoration: none;
+    color: inherit;
+    font-weight: 600;
+    border-top-left-radius: 999px;
+    border-bottom-left-radius: 999px;
+  }
+
+  .download-primary:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .download-primary:active {
+    transform: scale(0.98);
+  }
+
+  .download-primary .icon {
+    width: 24px;
+    height: 24px;
+    color: var(--gray-9);
+  }
+
+  .download-primary .icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .download-primary .text-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.2;
+  }
+
+  .download-primary .text-content small {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--gray-9);
+  }
+
+  /* Dropdown trigger */
+  .download-secondary {
+    position: relative;
+    width: 56px; /* Square aspect ratio */
+    border-top-right-radius: 999px;
+    border-bottom-right-radius: 999px;
+  }
+  /* Focus state for accessibility */
+  .download-secondary:focus-visible {
+    outline: 2px solid var(--pink-9);
+    outline-offset: 2px;
+  }
+
+  .download-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Vertical separator line */
+  .download-secondary::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 25%;
+    height: 50%;
+    width: 1px;
+    background-color: var(--gray-11);
+  }
+
+  /* Dropdown styles (retained from original with tweaks) */
+  .dropdown {
+    position: relative;
+  }
+
+  .dropdown summary {
+    list-style: none;
+  }
+  .dropdown summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .dropdown .chevron {
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .dropdown[open] > summary .chevron {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    bottom: calc(100% + 10px); /* Position above with a gap */
+    right: 0;
+    background-color: var(--gray-12);
+    border: 1px solid var(--gray-11);
+    border-radius: 12px;
+    padding: 0.5rem;
+    list-style: none;
+    margin: 0;
+    width: max-content;
+    z-index: 10;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(10px);
+    visibility: hidden;
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease,
+      visibility 0.3s;
+  }
+
+  .dropdown[open] .dropdown-menu {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+  }
+
+  .dropdown-menu li a {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 1.25rem;
+    color: var(--gray-1);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+  }
+
+  .dropdown-menu li a:hover {
+    background-color: var(--gray-11);
+  }
+
+  .dropdown-menu li a small {
+    color: var(--gray-9);
+  }
+</style>
