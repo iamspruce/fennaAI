@@ -1,0 +1,125 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+// This function tells Astro which pages to build
+export async function getStaticPaths() {
+  return [
+    { params: { slug: "macos" } },
+    { params: { slug: "windows" } },
+    { params: { slug: "linux" } },
+  ];
+}
+
+// Get the specific OS from the URL (e.g., "macos", "windows")
+const { slug } = Astro.params;
+
+// Capitalize the first letter for a nicer display
+const osName = slug ? slug.charAt(0).toUpperCase() + slug.slice(1) : "Download";
+---
+
+<Layout
+  title={`${osName} Download | FennaAI`}
+  description={`Download page for FennaAI on ${osName}.`}
+>
+  <div class="coming-soon-page">
+    <div class="container" data-animate-on-scroll>
+      <div class="icon">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="48"
+          height="48"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><path
+            d="M16.5 9.4l-9-5.19M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+          ></path><path d="M3.27 6.96L12 12.01l8.73-5.05"></path><path
+            d="M12 22.08V12"></path></svg
+        >
+      </div>
+      <h1>{osName} Build Coming Soon!</h1>
+      <p>
+        We're working hard to package and test the FennaAI build for {osName}.
+        It will be available for download right here very soon.
+      </p>
+      <a href="/" class="home-button">← Go Back Home</a>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .coming-soon-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh; /* Use min-height to fill the viewport */
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-color);
+  }
+
+  .container {
+    max-width: 42rem; /* 672px */
+  }
+
+  .icon {
+    color: var(--pink-11);
+    margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    font-size: 2.25rem; /* 36px */
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.7;
+    color: var(--gray-11);
+    margin-bottom: 2rem;
+  }
+
+  .home-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--pink-11);
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 9999px;
+    transition:
+      transform 0.2s,
+      background-color 0.2s;
+  }
+
+  .home-button:hover {
+    transform: scale(1.05);
+    background-color: #db2777; /* Pink 600 */
+  }
+
+  /* Simple fade-in animation */
+  [data-animate-on-scroll] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.6s ease-out,
+      transform 0.6s ease-out;
+  }
+</style>
+
+<script>
+  // Trigger the animation on page load
+  document.addEventListener("DOMContentLoaded", () => {
+    const animatedElement = document.querySelector("[data-animate-on-scroll]");
+    if (animatedElement) {
+      setTimeout(() => {
+        animatedElement.style.opacity = "1";
+        animatedElement.style.transform = "translateY(0)";
+      }, 100); // Small delay to ensure transition happens
+    }
+  });
+</script>
