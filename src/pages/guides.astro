@@ -1,0 +1,283 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Use Cases | FennaAI"
+  description="Discover how people use FennaAI to create, learn, and work smarter with their own personal AI."
+>
+  <div class="use-cases-page">
+    <header class="page-header" data-animate-on-scroll>
+      <h1>Imagine What You Could Build</h1>
+      <p>
+        FennaAI isn’t just another chatbot. It’s your own AI — trained on your
+        files, your notes, your world. See how people are already using it.
+      </p>
+    </header>
+
+    <main class="use-case-grid">
+      <div class="use-case-card" data-animate-on-scroll>
+        <h2>Writers & Creators</h2>
+        <p>
+          Turn your AI into a creative partner who knows your voice and never
+          runs out of ideas.
+        </p>
+        <ul>
+          <li>Brainstorm fresh plot twists</li>
+          <li>Develop dialogue in your style</li>
+          <li>Refine drafts with instant feedback</li>
+          <li>Summarize messy research notes</li>
+        </ul>
+      </div>
+
+      <div class="use-case-card" data-animate-on-scroll>
+        <h2>Professionals & Teams</h2>
+        <p>
+          Give your business a private assistant that understands your workflows
+          — no cloud, no leaks.
+        </p>
+        <ul>
+          <li>Query internal documents</li>
+          <li>Draft reports in your brand’s voice</li>
+          <li>Summarize meetings automatically</li>
+          <li>Turn raw data into clear insights</li>
+        </ul>
+      </div>
+
+      <div class="use-case-card" data-animate-on-scroll>
+        <h2>Students & Researchers</h2>
+        <p>
+          Study smarter with an AI that actually knows your material — because
+          you trained it.
+        </p>
+        <ul>
+          <li>Explain tough concepts clearly</li>
+          <li>Chat directly with your PDFs</li>
+          <li>Build custom study guides</li>
+          <li>Spot inconsistencies in notes</li>
+        </ul>
+      </div>
+
+      <div class="use-case-card" data-animate-on-scroll>
+        <h2>Everyday Life</h2>
+        <p>
+          Your life, your data, your AI. A personal assistant that grows with
+          you.
+        </p>
+        <ul>
+          <li>Plan meals with your recipes</li>
+          <li>Organize travel plans</li>
+          <li>Track new hobbies</li>
+          <li>Reflect on journal entries</li>
+        </ul>
+      </div>
+    </main>
+
+    <section class="how-to-section">
+      <div class="section-header" data-animate-on-scroll>
+        <h2>How It Works</h2>
+        <p>Two simple steps and you’re set.</p>
+      </div>
+      <div class="how-to-steps" data-animate-on-scroll>
+        <div class="how-to-card">
+          <h3>1. Pick an AI</h3>
+          <p>
+            Browse the library and grab a base AI — a generalist, a writer, a
+            researcher, whatever fits you best.
+          </p>
+        </div>
+        <div class="how-to-card">
+          <h3>2. Train It</h3>
+          <p>
+            Upload your files, notes, or PDFs. In minutes, you’ve got a personal
+            AI that actually knows your stuff.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section" data-animate-on-scroll>
+      <h2>Your AI, Your Way</h2>
+      <a href="/models" class="cta-button">Start Building Now</a>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .use-cases-page {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+
+  .page-header,
+  .section-header {
+    text-align: center;
+    padding: 4rem 1rem 3rem;
+  }
+
+  .page-header h1,
+  .section-header h2,
+  .cta-section h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: var(--gray-12);
+  }
+
+  .page-header p,
+  .section-header p {
+    font-size: 1.125rem;
+    color: var(--gray-11);
+    max-width: 48rem;
+    margin: 0 auto;
+  }
+
+  .use-case-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .use-case-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .use-case-card {
+    background: var(--gray-3);
+    border: 1px solid var(--gray-6);
+    border-radius: 1rem;
+    padding: 2rem;
+    transition: transform 0.2s;
+  }
+
+  .use-case-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .use-case-card h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .use-case-card p {
+    color: var(--gray-11);
+    margin-bottom: 1.25rem;
+  }
+
+  .use-case-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .use-case-card li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--gray-11);
+  }
+
+  .use-case-card li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  .how-to-section {
+    padding: 4rem 0;
+  }
+
+  .how-to-steps {
+    display: grid;
+    gap: 2rem;
+    max-width: 64rem;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 768px) {
+    .how-to-steps {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .how-to-card {
+    background: var(--gray-3);
+    border: 1px solid var(--gray-4);
+    border-radius: 1rem;
+    padding: 2rem;
+  }
+
+  .how-to-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .how-to-card p {
+    color: var(--gray-11);
+  }
+
+  .cta-section {
+    text-align: center;
+    padding: 4rem 1rem;
+  }
+
+  .cta-button {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.875rem 2.5rem;
+    background: var(--pink-10);
+    color: var(--pink-1);
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition:
+      background 0.2s,
+      transform 0.2s;
+  }
+
+  .cta-button:hover {
+    background: var(--pink-6);
+    transform: scale(1.05);
+  }
+
+  [data-animate-on-scroll] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s ease;
+  }
+
+  [data-animate-on-scroll].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const elements = document.querySelectorAll("[data-animate-on-scroll]");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+  });
+</script>

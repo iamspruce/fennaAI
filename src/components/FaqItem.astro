@@ -1,12 +1,14 @@
 ---
 // src/components/FaqItem.astro
 export interface Props {
+  // Pass down any extra attributes like class for animations
+  [key: string]: any;
   question: string;
 }
-const { question } = Astro.props;
+const { question, ...rest } = Astro.props;
 ---
 
-<details class="faq-item">
+<details class="faq-item" {...rest}>
   <summary>
     <span>{question}</span>
     <svg
@@ -14,10 +16,7 @@ const { question } = Astro.props;
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
-      viewBox="0'
-      0
-      24
-      24"
+      viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
       stroke-width="2"
@@ -29,7 +28,9 @@ const { question } = Astro.props;
     </svg>
   </summary>
   <div class="answer">
-    <slot />
+    <div class="answer-content">
+      <slot />
+    </div>
   </div>
 </details>
 
@@ -50,20 +51,54 @@ const { question } = Astro.props;
     font-size: var(--step-0);
     font-weight: 500;
     color: var(--gray-12);
+    /* Added transition for hover effect */
+    transition: color 0.2s ease;
   }
+
+  .faq-item summary:hover,
+  .faq-item:focus-within summary {
+    color: var(--pink-9); /* Or your preferred accent color */
+  }
+
   .faq-item summary::-webkit-details-marker {
     display: none; /* Hide marker in Chrome */
   }
+
+  /*
+    NEW: Grid Animation Setup
+    The .answer is now a grid container that animates its rows
+    from 0fr (zero fraction) to 1fr (one fraction).
+  */
   .faq-item .answer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease-out;
+  }
+
+  /* NEW: When the FAQ item is open, the grid expands */
+  .faq-item[open] .answer {
+    grid-template-rows: 1fr;
+  }
+
+  /*
+    NEW: The actual content wrapper
+    This ensures the content inside doesn't overflow while the
+    grid container is animating.
+  */
+  .answer-content {
+    overflow: hidden;
     padding-top: var(--space-s);
     line-height: 1.6;
     color: var(--gray-11);
   }
+
   .faq-item .icon {
-    transition: transform 0.2s ease-in-out;
+    /* Snappier transition easing */
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
     flex-shrink: 0;
     margin-left: var(--space-s);
   }
+
   /* When the details element is open, rotate the plus icon */
   .faq-item[open] > summary .icon {
     transform: rotate(45deg);

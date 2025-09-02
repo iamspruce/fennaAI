@@ -1,0 +1,148 @@
+---
+export interface Props {
+  plan: string;
+  price: string;
+  description: string;
+  features: string[];
+  buttonText?: string;
+  highlighted?: boolean;
+  badge?: string;
+  delay?: number; // For staggering animations
+}
+
+const {
+  plan,
+  price,
+  description,
+  features,
+  buttonText = "Purchase Credits",
+  highlighted = false,
+  badge,
+  delay = 0,
+} = Astro.props;
+---
+
+<div
+  class:list={["pricing-card", { highlighted }]}
+  data-animate-on-scroll
+  style={`transition-delay: ${delay}ms;`}
+>
+  {badge && <div class="badge">{badge}</div>}
+
+  <h3 class="plan-title">{plan}</h3>
+  <p class="plan-price">{price}</p>
+  <p class="plan-description">{description}</p>
+
+  <ul class="features-list">
+    {
+      features.map((feature) => (
+        <li class="feature-item">
+          <svg
+            class="icon"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 13l4 4L19 7"
+            />
+          </svg>
+          <span>{feature}</span>
+        </li>
+      ))
+    }
+  </ul>
+
+  <a href="#" class="cta-button">{buttonText}</a>
+</div>
+
+<style>
+  .pricing-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    border-radius: 1rem; /* 16px */
+    border: 2px solid var(--pink-3);
+    transition: transform 0.3s ease-out;
+    background-color: var(--gray-3);
+  }
+
+  .pricing-card:hover {
+    transform: scale(1.03);
+  }
+
+  /* Highlighted State */
+  .pricing-card.highlighted {
+    transform: scale(1.03);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+
+  .badge {
+    position: absolute;
+    top: 0;
+    right: 2rem; /* 32px */
+    transform: translateY(-50%);
+    background-color: var(--pink-11); /* Pink 500 */
+    color: var(--pink-1);
+    font-size: 0.875rem; /* 14px */
+    font-weight: 700;
+    padding: 0.25rem 1rem;
+    border-radius: 9999px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+
+  .plan-title {
+    font-size: 1.25rem; /* 20px */
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .plan-price {
+    font-size: 2.25rem; /* 36px */
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  .plan-description {
+    color: var(--gray-11); /* Gray 600 */
+    margin-bottom: 1.5rem;
+    min-height: 40px;
+  }
+  .features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: var(--gray-10); /* Gray 700 */
+  }
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .feature-item .icon {
+    width: 1.25rem; /* 20px */
+    height: 1.25rem;
+    color: var(--pink-11); /* Pink 500 */
+    flex-shrink: 0;
+  }
+  .cta-button {
+    margin-top: auto; /* Pushes button to the bottom */
+    text-align: center;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+    background-color: var(--pink-11);
+    color: var(--pink-1, inherit);
+  }
+  .cta-button:hover {
+    background-color: var(--pink-9);
+  }
+</style>

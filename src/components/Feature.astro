@@ -1,0 +1,119 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro:assets";
+
+export interface Props {
+  title: string;
+  description: string;
+  image?: ImageMetadata;
+  reverse?: boolean;
+}
+
+const { title, description, image, reverse } = Astro.props;
+---
+
+<div
+  class:list={["feature-card", { reverse: reverse, "no-image": !image }]}
+  data-animate-on-scroll
+>
+  {
+    image && (
+      <div class="feature-image-wrapper">
+        <Image
+          src={image}
+          alt={title}
+          width={500}
+          height={400}
+          class="feature-image"
+        />
+      </div>
+    )
+  }
+
+  <div class="feature-text">
+    <h2 class="feature-title">{title}</h2>
+    <p class="feature-description">{description}</p>
+  </div>
+</div>
+
+<style>
+  .feature-card {
+    /* Base styles for all cards */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .feature-image-wrapper,
+  .feature-text {
+    width: 100%;
+  }
+
+  .feature-image-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  .feature-image {
+    border-radius: 1rem;
+    box-shadow:
+      0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    height: auto;
+  }
+
+  .feature-title {
+    font-size: 1.5rem; /* 24px */
+    line-height: 2rem; /* 32px */
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .feature-description {
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.75rem; /* 28px */
+    color: #4b5563;
+  }
+
+  /* --- Styles for cards WITH images on desktop --- */
+  @media (min-width: 768px) {
+    .feature-card {
+      flex-direction: row;
+    }
+
+    .feature-card.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .feature-image-wrapper,
+    .feature-text {
+      width: 50%;
+    }
+  }
+
+  /* --- NEW: Styles for cards WITHOUT images on desktop --- */
+  @media (min-width: 768px) {
+    .feature-card.no-image {
+      /* Center the text block horizontally */
+      justify-content: center;
+    }
+
+    .feature-card.no-image .feature-text {
+      /* Make the text block wider but not full-width for readability */
+      width: 100%;
+      max-width: 48rem; /* 768px */
+      text-align: center;
+    }
+  }
+
+  /* Dark mode styles */
+  @media (prefers-color-scheme: dark) {
+    .feature-description {
+      color: #d1d5db;
+    }
+  }
+</style>

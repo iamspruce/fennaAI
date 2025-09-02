@@ -1,0 +1,273 @@
+---
+// src/components/DownloadSection.astro
+---
+
+<div class="download-section animate slide delay-4">
+  <div>
+    <a href="#" class="download-primary os-download-link">
+      <span class="icon os-icon"></span>
+      <span class="text-content">
+        <span class="os-text">Download FennaAI</span>
+        <small class="os-details">Detecting your OS...</small>
+      </span>
+    </a>
+
+    <details class="dropdown">
+      <summary
+        class="download-secondary"
+        aria-label="Show other download options"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="chevron"
+        >
+          <path d="m6 9 6 6 6-6"></path>
+        </svg>
+      </summary>
+      <ul class="dropdown-menu">
+        <li>
+          <a href="/download/macos">macOS <small>(Apple Silicon)</small></a>
+        </li>
+        <li>
+          <a href="/download/windows">Windows <small>(x64)</small></a>
+        </li>
+        <li><a href="/download/linux">Linux <small>(.deb)</small></a></li>
+      </ul>
+    </details>
+  </div>
+</div>
+
+<script>
+  // Smarter OS Detection Script
+  document.addEventListener("DOMContentLoaded", () => {
+    // Select all download links by their new class
+    const downloadLinks = document.querySelectorAll(".os-download-link");
+    // If no download links are found on the page, do nothing.
+    if (downloadLinks.length === 0) return;
+    const platform = navigator.platform.toLowerCase();
+
+    // Platform details map (using the SVGs you provided)
+    const platforms = {
+      macos: {
+        name: "macOS",
+        href: "/download/macos",
+        details: "v1.2.3 • Apple Silicon",
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 17.607c-.786 2.28-3.139 6.317-5.563 6.361-1.608.031-2.125-.953-3.963-.953-1.837 0-2.412.923-3.932.983-2.572.099-6.542-5.827-6.542-10.995 0-4.747 3.308-7.1 6.198-7.143 1.55-.028 3.014 1.045 3.959 1.045.949 0 2.727-1.29 4.596-1.101.782.033 2.979.315 4.389 2.377-3.741 2.442-3.158 7.549.858 9.426zm-5.222-17.607c-2.826.114-5.132 3.079-4.81 5.531 2.612.203 5.118-2.725 4.81-5.531z"/></svg>`,
+      },
+      windows: {
+        name: "Windows",
+        href: "/download/windows",
+        details: "v1.2.3 • Windows x64",
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 12v-8.646l10-1.355v10.001h-10zm11 0h13v-12l-13 1.807v10.193zm-1 1h-10v7.646l10 1.355v-9.001zm1 0v9.194l13 1.806v-11h-13z"/></svg>`,
+      },
+      linux: {
+        name: "Linux",
+        href: "/download/linux",
+        details: "v1.2.3 • Debian",
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.581 19.049c-.55-.446-.336-1.431-.907-1.917.553-3.365-.997-6.331-2.845-8.232-1.551-1.595-1.051-3.147-1.051-4.49 0-2.146-.881-4.41-3.55-4.41-2.853 0-3.635 2.38-3.663 3.738-.068 3.262.659 4.11-1.25 6.484-2.246 2.793-2.577 5.579-2.07 7.057-.237.276-.557.582-1.155.835-1.652.72-.441 1.925-.898 2.78-.13.243-.192.497-.192.74 0 .75.596 1.399 1.679 1.302 1.461-.13 2.809.905 3.681.905.77 0 1.402-.438 1.696-1.041 1.377-.339 3.077-.296 4.453.059.247.691.917 1.141 1.662 1.141 1.631 0 1.945-1.849 3.816-2.475.674-.225 1.013-.879 1.013-1.488 0-.39-.139-.761-.419-.988zm-9.147-10.465c-.319 0-.583-.258-1-.568-.528-.392-1.065-.618-1.059-1.03 0-.283.379-.37.869-.681.526-.333.731-.671 1.249-.671.53 0 .69.268 1.41.579.708.307 1.201.427 1.201.773 0 .355-.741.609-1.158.868-.613.378-.928.73-1.512.73zm1.665-5.215c.882.141.981 1.691.559 2.454l-.355-.145c.184-.543.181-1.437-.435-1.494-.391-.036-.643.48-.697.922-.153-.064-.32-.11-.523-.127.062-.923.658-1.737 1.451-1.61zm-3.403.331c.676-.168 1.075.618 1.078 1.435l-.31.19c-.042-.343-.195-.897-.579-.779-.411.128-.344 1.083-.115 1.279l-.306.17c-.42-.707-.419-2.133.232-2.295zm-2.115 19.243c-1.963-.893-2.63-.69-3.005-.69-.777 0-1.031-.579-.739-1.127.248-.465.171-.952.11-1.343-.094-.599-.111-.794.478-1.052.815-.346 1.177-.791 1.447-1.124.758-.937 1.523.537 2.15 1.85.407.851 1.208 1.282 1.455 2.225.227.871-.71 1.801-1.896 1.261zm6.987-1.874c-1.384.673-3.147.982-4.466.299-.195-.563-.507-.927-.843-1.293.539-.142.939-.814.46-1.489-.511-.721-1.555-1.224-2.61-2.04-.987-.763-1.299-2.644.045-4.746-.655 1.862-.272 3.578.057 4.069.068-.988.146-2.638 1.496-4.615.681-.998.691-2.316.706-3.14l.62.424c.456.337.838.708 1.386.708.81 0 1.258-.466 1.882-.853.244-.15.613-.302.923-.513.52 2.476 2.674 5.454 2.795 7.15.501-1.032-.142-3.514-.142-3.514.842 1.285.909 2.356.946 3.67.589.241 1.221.869 1.279 1.696l-.245-.028c-.126-.919-2.607-2.269-2.83-.539-1.19.181-.757 2.066-.997 3.288-.11.559-.314 1.001-.462 1.466zm4.846-.041c-.985.38-1.65 1.187-2.107 1.688-.88.966-2.044.503-2.168-.401-.131-.966.36-1.493.572-2.574.193-.987-.023-2.506.431-2.668.295 1.753 2.066 1.016 2.47.538.657 0 .712.222.859.837.092.385.219.709.578 1.09.418.447.29 1.133-.635 1.49zm-8-13.006c-.651 0-1.138-.433-1.534-.769-.203-.171.05-.487.253-.315.387.328.777.675 1.281.675.607 0 1.142-.519 1.867-.805.247-.097.388.285.143.382-.704.277-1.269.832-2.01.832z"/></svg>`,
+      },
+    };
+
+    // Detect the OS once
+    let detectedOS = null;
+    if (platform.includes("mac")) detectedOS = "macos";
+    else if (platform.includes("win")) detectedOS = "windows";
+    else if (platform.includes("linux")) detectedOS = "linux";
+
+    // Loop through each download link found on the page
+    downloadLinks.forEach((link) => {
+      // Find the icon, text, and details elements INSIDE the current link
+      const osIcon = link.querySelector(".os-icon");
+      const osText = link.querySelector(".os-text");
+      const osDetails = link.querySelector(".os-details");
+
+      // Make sure all parts exist before trying to update them
+      if (!osIcon || !osText || !osDetails) return;
+
+      if (detectedOS && platforms[detectedOS]) {
+        // If OS is detected, update the button with specific info
+        const os = platforms[detectedOS];
+        link.href = os.href;
+        osIcon.innerHTML = os.icon;
+        osText.textContent = `Download for ${os.name}`;
+        osDetails.textContent = os.details;
+      } else {
+        // Otherwise, show generic fallback text
+        osText.textContent = "Download Now";
+        osDetails.textContent = "View all platforms";
+      }
+    });
+  });
+</script>
+
+<style>
+  /* --- Download Section Styles --- */
+  .download-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    width: 100%;
+  }
+
+  .download-section div {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    width: 100%;
+    max-width: 800px;
+  }
+
+  /* Base styles for both buttons */
+  .download-primary,
+  .download-secondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 999px;
+    background: var(--gray-2);
+    border: 1px solid var(--gray-11);
+    box-shadow: var(--shadow-m);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    color: var(--gray-12);
+    width: 100%;
+  }
+
+  .download-primary:hover,
+  .download-secondary:hover {
+    border-color: var(--gray-9);
+    box-shadow: var(--shadow-l);
+    transform: translateY(-3px); /* Enhanced hover effect */
+  }
+
+  .download-primary:active,
+  .download-secondary:active {
+    transform: translateY(-1px) scale(0.98);
+    box-shadow: var(--shadow-l);
+  }
+
+  /* Main download link */
+  .download-primary {
+    gap: var(--space-xs);
+    text-decoration: none;
+    padding: var(--space-xs) var(--space-m);
+  }
+
+  .download-primary .icon {
+    width: 24px;
+    height: 24px;
+    display: grid;
+    place-items: center;
+  }
+
+  .download-primary .icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .download-primary .text-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.2;
+  }
+
+  .download-primary .text-content small {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--gray-11);
+  }
+
+  /* Dropdown trigger button */
+  .download-secondary {
+    width: var(--space-xl);
+    height: var(--space-xl); /* Square */
+  }
+
+  .download-secondary svg {
+    fill: none;
+  }
+
+  .download-secondary:focus-visible {
+    outline: 2px solid var(--pink-9);
+    outline-offset: 2px;
+  }
+
+  /* Dropdown styles */
+  .dropdown {
+    position: relative;
+  }
+
+  .dropdown summary {
+    list-style: none;
+  }
+  .dropdown summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .dropdown .chevron {
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .dropdown[open] > summary .chevron {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    right: 0;
+    background-color: var(--gray-2);
+    border: 1px solid var(--gray-11);
+    border-radius: 12px;
+    padding: 0.5rem;
+    list-style: none;
+    margin: 0;
+    width: max-content;
+    z-index: -1; /* Keep it behind the button initially */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(10px);
+    visibility: hidden;
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease,
+      visibility 0.3s;
+  }
+
+  .dropdown[open] .dropdown-menu {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+    z-index: 10;
+  }
+
+  .dropdown-menu li a {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 1.25rem;
+    color: var(--gray-12);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+  }
+
+  .dropdown-menu li a:hover {
+    background-color: var(--gray-3);
+  }
+
+  .dropdown-menu li a small {
+    color: var(--gray-11);
+  }
+</style>

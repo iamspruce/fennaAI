@@ -23,6 +23,10 @@ svg {
   height: auto;
 }
 
+svg {
+  fill: currentColor;
+}
+
 svg * {
   transform-box: fill-box;
 }

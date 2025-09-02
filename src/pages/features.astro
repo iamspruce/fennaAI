@@ -1,89 +1,136 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Feature from "../components/Feature.astro";
+
+// Import images from your assets directory
+import trainImg from "../assets/images/features/train.png";
+import chatFilesImg from "../assets/images/features/files.png";
 ---
 
 <Layout
-  title="FennaAI | Features"
-  description="Discover the features of FennaAI — your private, personal AI that runs locally and learns from your data."
+  title="Features | FennaAI"
+  description="FennaAI is your personal AI that runs locally, learns from your data, and keeps everything private. No cloud, no lock-in — just your AI, your way."
 >
-  <div class="page features-page">
-    <h1>FennaAI Features</h1>
-    <p class="intro">
-      FennaAI is designed to give you a personal AI that’s private, powerful,
-      and easy to use. Here’s what you can do:
-    </p>
+  <div class="features-page max-w-6xl mx-auto px-4">
+    <header data-animate-on-scroll>
+      <h1>Features that Put <em>You</em> in Control</h1>
+      <p class="intro">
+        FennaAI is built for everyday people, not just developers. Train, chat,
+        and customize your own AI — all on your computer, all in private.
+      </p>
+    </header>
 
-    <section class="features-grid">
-      <div class="feature-item">
-        <h2>Train Your AI</h2>
-        <p>
-          Teach FennaAI using your own documents, emails, notes, or business
-          data. Your AI adapts to your needs and stays private on your machine.
-        </p>
-      </div>
+    <section>
+      <Feature
+        title="Train AI on Your Data"
+        description="Finally, you can teach AI without needing a PhD. Upload your files or notes, and with a few clicks, FennaAI trains the model so it understands your voice, your business, and your way of thinking. No cloud, no experts required."
+      />
 
-      <div class="feature-item">
-        <h2>Work Offline</h2>
-        <p>
-          Once installed, FennaAI runs completely offline. No internet
-          connection is needed for chatting or training your AI.
-        </p>
-      </div>
+      <Feature
+        title="Chat with Your Files"
+        description="Skip the training step and just drop in your files. PDFs, notes, or business documents — FennaAI instantly answers questions and helps you make sense of your data privately."
+        reverse
+      />
 
-      <div class="feature-item">
-        <h2>Choose Your Model</h2>
-        <p>
-          FennaAI supports a variety of open-source AI models. We automatically
-          recommend models that work best on your system.
-        </p>
-      </div>
+      <Feature
+        title="100+ Free AI Models"
+        description="Pick from a growing library of models, from lightweight ones that run on everyday laptops to advanced ones that rival GPT-4. If your system can handle it, you can run it."
+      />
 
-      <div class="feature-item">
-        <h2>Private & Secure</h2>
-        <p>
-          Your data never leaves your computer. We do not have access to your
-          files or models. You are fully in control of your AI.
-        </p>
-      </div>
+      <Feature
+        title="Personalized & Private"
+        description="Shape the way your AI thinks and responds. Adjust tone, style, and knowledge — and because it all runs locally, your data never leaves your computer."
+        reverse
+      />
 
-      <div class="feature-item">
-        <h2>Easy to Use</h2>
-        <p>
-          No coding required. FennaAI’s interface guides you step by step
-          through downloading, training, and chatting with your AI.
-        </p>
-      </div>
-
-      <div class="feature-item">
-        <h2>Cross-Platform</h2>
-        <p>
-          FennaAI works on macOS, Windows, and Linux. Mobile and Gmail
-          integrations are coming soon.
-        </p>
-      </div>
-
-      <div class="feature-item">
-        <h2>Regular Updates</h2>
-        <p>
-          We continually release updates to improve performance, add new models,
-          and enhance features. You’ll be notified in-app when updates are
-          available.
-        </p>
-      </div>
-
-      <div class="feature-item">
-        <h2>Community & Support</h2>
-        <p>
-          Join our user community to share tips, discover model recommendations,
-          and get support directly from other FennaAI users.
-        </p>
-      </div>
+      <Feature
+        title="Simple API for Developers"
+        description="For builders who want to go further, FennaAI includes a clean, lightweight API. Integrate your personal AI into apps, scripts, and workflows without the cloud."
+      />
     </section>
 
-    <section class="cta-section">
-      <h2>Ready to get started?</h2>
-      <p>Experience the power of your personal AI. Private. Personal. Yours.</p>
-      <button class="download-button">Download FennaAI</button>
+    <section data-animate-on-scroll>
+      <h2>Ready to Build Your Personal AI?</h2>
+      <p>
+        Train it. Chat with it. Make it yours. <br />
+        Your AI — private, personal, and running on your machine.
+      </p>
+      <a
+        href="/#download"
+        class="download-button inline-block px-8 py-4 rounded-2xl shadow-lg text-lg font-semibold"
+      >
+        Download FennaAI
+      </a>
     </section>
   </div>
 </Layout>
+
+<style>
+  [data-animate-on-scroll] {
+    opacity: 0;
+    transform: translateY(40px);
+    transition:
+      opacity 0.6s ease-out,
+      transform 0.6s ease-out;
+  }
+
+  [data-animate-on-scroll].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .features-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+    padding: var(--space-s);
+  }
+
+  header,
+  section {
+    text-align: center;
+  }
+
+  header h1 {
+    font-size: var(--step-5);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.04em;
+    margin-bottom: var(--space-m);
+  }
+
+  .intro {
+    font-size: 1.25rem;
+    color: #4b5563;
+    max-width: 42rem;
+    margin: 0 auto var(--space-l);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .intro {
+      color: #d1d5db;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const animatedElements = document.querySelectorAll(
+      "[data-animate-on-scroll]"
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    animatedElements.forEach((el) => observer.observe(el));
+  });
+</script>
