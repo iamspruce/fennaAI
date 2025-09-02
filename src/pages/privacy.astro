@@ -1,0 +1,212 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const LAST_UPDATED = "September 2, 2025";
+---
+
+<Layout
+  title="Privacy Policy | FennaAI"
+  description="FennaAI is private by design. Learn how your data stays on your device, not in the cloud."
+>
+  <div class="privacy-page">
+    <header class="page-header" data-animate-on-scroll>
+      <h1>Privacy Policy</h1>
+      <p class="meta">Last updated: {LAST_UPDATED}</p>
+      <p class="lede">
+        FennaAI is built to be private by default. Training and chat happen on
+        your device, and your files stay with you.
+      </p>
+    </header>
+
+    <main class="content">
+      <section data-animate-on-scroll>
+        <h2>1. TL;DR</h2>
+        <p>
+          <strong>Your data stays on your device.</strong> We don’t see your files,
+          your models, or your chats unless you explicitly send them to us for support.
+        </p>
+      </section>
+
+      <section data-animate-on-scroll>
+        <h2>2. Data We Process Locally</h2>
+        <p>
+          When you use FennaAI, your training data, model files, and chat
+          history are processed and stored locally on your machine. You can
+          delete them at any time from within the app or your filesystem.
+        </p>
+      </section>
+
+      <section data-animate-on-scroll>
+        <h2>3. Data We May Collect</h2>
+        <ul>
+          <li>
+            <strong>Account info (optional):</strong> If you create an account to
+            purchase training credits, we collect your email and basic account details.
+          </li>
+          <li>
+            <strong>Payment info:</strong> Payments are handled by third-party processors.
+            We do not store full payment card details.
+          </li>
+          <li>
+            <strong>Diagnostics (opt-in):</strong> You may choose to share anonymized
+            crash reports or performance metrics to help us improve the app.
+          </li>
+          <li>
+            <strong>Website analytics:</strong> We may use privacy-respecting analytics
+            to understand usage of our website, without tracking you across the web.
+          </li>
+        </ul>
+      </section>
+
+      <section data-animate-on-scroll>
+        <h2>4. Cookies</h2>
+        <p>
+          Our website may use minimal cookies for essential functions (e.g.,
+          session or preferences). We avoid third-party tracking where possible.
+        </p>
+      </section>
+
+      <section data-animate-on-scroll>
+        <h2>5. How We Use Information</h2>
+        <ul>
+          <li>Provide and improve FennaAI and related services.</li>
+          <li>Process payments and manage training credits.</li>
+          <li>Respond to support requests you initiate.</li>
+          <li>Send important notices about updates or changes to terms.</li>
+        </ul>
+      </section>
+
+      <section data-animate-on-scroll>
+        <h2>6. Sharing</h2>
+        <p>
+          We do not sell your personal information. We may share limited data
+          with <strong>service providers</strong> (e.g., payment processors) to operate
+          the Service, subject to appropriate safeguards.
+        </p>
+      </section>
+
+      <section data-animate-on-scroll>
+        <h2>7. Security</h2>
+        <p>
+          We take reasonable measures to protect information we hold. Local data
+          on your device is controlled by you. We recommend enabling your OS
+          security features and keeping backups.
+        </p>
+      </section>
+
+      <section data-animate-on-scroll>
+        <h2>8. Your Choices</h2>
+        <ul>
+          <li>Use FennaAI offline and keep all data local.</li>
+          <li>Opt in/out of diagnostics at any time.</li>
+          <li>
+            Request deletion of your cloud account data (if you created one) by
+            emailing <a href="mailto:privacy@fennaai.com">privacy@fennaai.com</a
+            >.
+          </li>
+        </ul>
+      </section>
+
+      <section data-animate-on-scroll>
+        <h2>9. Children’s Privacy</h2>
+        <p>
+          FennaAI is not intended for children under 13. If you believe a child
+          has provided us with personal information, contact us and we will
+          delete it.
+        </p>
+      </section>
+
+      <section data-animate-on-scroll>
+        <h2>10. Changes to This Policy</h2>
+        <p>
+          We may update this Policy to reflect changes to the Service. When we
+          do, we’ll update the “Last updated” date and, where appropriate,
+          provide additional notice.
+        </p>
+      </section>
+
+      <section data-animate-on-scroll>
+        <h2>11. Contact</h2>
+        <p>
+          Privacy questions? Email <a href="mailto:privacy@fennaai.com"
+            >privacy@fennaai.com</a
+          >.
+        </p>
+      </section>
+    </main>
+  </div>
+</Layout>
+
+<style>
+  .privacy-page {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  .page-header {
+    text-align: center;
+    padding: 4rem 1rem 2rem;
+  }
+  .page-header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+  }
+  .meta {
+    color: #6b7280;
+  }
+  .lede {
+    max-width: 46rem;
+    margin: 0.75rem auto 0;
+    color: #4b5563;
+  }
+  .content {
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 2rem 0 4rem;
+    display: grid;
+    gap: 2rem;
+  }
+  .content h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  ul {
+    padding-left: 1.25rem;
+  }
+  [data-animate-on-scroll] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s ease;
+  }
+  [data-animate-on-scroll].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-color-scheme: dark) {
+    .meta,
+    .lede {
+      color: #9ca3af;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const els = document.querySelectorAll("[data-animate-on-scroll]");
+    const io = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-visible");
+            io.unobserve(e.target);
+          }
+        }),
+      { threshold: 0.1 }
+    );
+    els.forEach((el) => io.observe(el));
+  });
+</script>

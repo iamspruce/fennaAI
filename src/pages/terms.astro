@@ -1,89 +1,237 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+// Update this if your legal entity name changes
+const COMPANY_NAME = "FennaAI Labs, Inc.";
+const LAST_UPDATED = "September 2, 2025";
 ---
 
 <Layout
-  title="FennaAI | Terms of Service"
-  description="Read the Terms of Service for FennaAI, your personal AI that runs locally and keeps your data private."
+  title="Terms & Conditions | FennaAI"
+  description="Read the Terms & Conditions for FennaAI — your private, personal AI that runs locally."
 >
-  <div class="page terms-page">
-    <h1>Terms of Service</h1>
-    <p>Last updated: September 2025</p>
-
-    <section>
-      <h2>1. Acceptance of Terms</h2>
-      <p>
-        By downloading, installing, or using FennaAI, you agree to these Terms
-        of Service. If you do not agree, please do not use FennaAI.
+  <div class="terms-page">
+    <header class="page-header" data-animate-on-scroll>
+      <h1>Terms & Conditions</h1>
+      <p class="meta">Last updated: {LAST_UPDATED}</p>
+      <p class="lede">
+        Welcome to FennaAI. Please read these Terms carefully. By downloading,
+        installing, or using FennaAI, you agree to these Terms.
       </p>
-    </section>
+    </header>
 
-    <section>
-      <h2>2. Your AI, Your Data</h2>
-      <p>
-        FennaAI runs entirely on your computer. All data, files, and models you
-        create remain on your device. We do not access your personal or business
-        data. You are responsible for the content you train your AI with.
-      </p>
-    </section>
+    <main class="content">
+      <section data-animate-on-scroll>
+        <h2>1. Who We Are</h2>
+        <p>
+          These Terms & Conditions (“Terms”) are a legal agreement between you
+          and <strong>{COMPANY_NAME}</strong> (“FennaAI”, “we”, “us”, or “our”) governing
+          your use of the FennaAI software, websites, and services (collectively,
+          the “Service”).
+        </p>
+      </section>
 
-    <section>
-      <h2>3. Use of FennaAI</h2>
-      <p>
-        FennaAI is intended for personal and business use. You may not use the
-        app to create harmful, illegal, or malicious content.
-      </p>
-    </section>
+      <section data-animate-on-scroll>
+        <h2>2. Your Privacy & Local Processing</h2>
+        <p>
+          FennaAI is designed to run <strong>locally on your device</strong>.
+          Your files and training data remain on your machine by default. We do
+          not access your content, your models, or your conversations unless you
+          explicitly share them with us for support.
+        </p>
+      </section>
 
-    <section>
-      <h2>4. Intellectual Property</h2>
-      <p>
-        The FennaAI app and branding are owned by us. You retain ownership of
-        the data and AI models you create using FennaAI.
-      </p>
-    </section>
+      <section data-animate-on-scroll>
+        <h2>3. Accounts & Eligibility</h2>
+        <p>
+          You must be capable of forming a binding contract to use the Service.
+          If you create an account, you agree to provide accurate information
+          and keep it up to date.
+        </p>
+      </section>
 
-    <section>
-      <h2>5. Updates</h2>
-      <p>
-        We may release updates to improve functionality, add features, or fix
-        bugs. You agree to receive updates as part of using the app.
-      </p>
-    </section>
+      <section data-animate-on-scroll>
+        <h2>4. Your Content & Ownership</h2>
+        <p>
+          You own the content you use to teach or interact with your AI, as well
+          as the <strong>locally produced artifacts</strong> (e.g., tuned model weights
+          saved on your device) subject to any applicable third-party model or dataset
+          licenses. You are responsible for ensuring you have the rights to use the
+          content you provide.
+        </p>
+      </section>
 
-    <section>
-      <h2>6. Disclaimer</h2>
-      <p>
-        FennaAI is provided “as is.” While we strive for safety and reliability,
-        we do not guarantee results. You are responsible for your use of the app
-        and your AI models.
-      </p>
-    </section>
+      <section data-animate-on-scroll>
+        <h2>5. Open-Source Models & Third-Party Components</h2>
+        <p>
+          FennaAI enables you to download and run open-source models and tools
+          that may be licensed under their own terms. Those third-party terms
+          govern your use of those components. Where there is a conflict,
+          third-party licenses control for those components.
+        </p>
+      </section>
 
-    <section>
-      <h2>7. Limitation of Liability</h2>
-      <p>
-        In no event shall FennaAI, its developers, or affiliates be liable for
-        any damages arising from your use of the app, including loss of data or
-        interruptions in service.
-      </p>
-    </section>
+      <section data-animate-on-scroll>
+        <h2>6. Permitted & Prohibited Use</h2>
+        <p>
+          You may use FennaAI for personal or business purposes in compliance
+          with applicable laws. You may not use the Service to create or
+          distribute illegal content; violate privacy or intellectual property
+          rights; interfere with or disrupt the Service; or attempt to
+          reverse-engineer parts of the software except where permitted by law
+          or by an open-source license.
+        </p>
+      </section>
 
-    <section>
-      <h2>8. Contact</h2>
-      <p>
-        If you have questions about these Terms, reach out to us at <a
-          href="mailto:support@fenna.ai">support@fenna.ai</a
-        >.
-      </p>
-    </section>
+      <section data-animate-on-scroll>
+        <h2>7. Credits & Payments</h2>
+        <p>
+          Credits, when offered, are used <strong
+            >only for training/fine-tuning</strong
+          > models within FennaAI. Chatting and file Q&A features are free and do
+          not consume credits. Payments are processed by third-party providers; their
+          terms and privacy statements apply to payment details.
+        </p>
+      </section>
 
-    <section>
-      <h2>9. Changes to Terms</h2>
-      <p>
-        We may update these Terms occasionally. Users will be notified of
-        significant changes via the app or website.
-      </p>
-    </section>
+      <section data-animate-on-scroll>
+        <h2>8. Updates & Changes</h2>
+        <p>
+          We may provide updates to improve performance, security,
+          compatibility, and features. The Service may change over time. Where
+          materially impactful, we will make reasonable efforts to notify users
+          via the app or website.
+        </p>
+      </section>
+
+      <section data-animate-on-scroll>
+        <h2>9. Beta & Experimental Features</h2>
+        <p>
+          Some features may be labeled beta or experimental and may be less
+          stable than other parts of the Service. You use these features at your
+          discretion.
+        </p>
+      </section>
+
+      <section data-animate-on-scroll>
+        <h2>10. Disclaimers</h2>
+        <p>
+          The Service is provided on an “as is” and “as available” basis. <strong
+            >{COMPANY_NAME}</strong
+          > disclaims all warranties, express or implied, including fitness for a
+          particular purpose and non-infringement. You are responsible for evaluating
+          outputs and for how you use them.
+        </p>
+      </section>
+
+      <section data-animate-on-scroll>
+        <h2>11. Limitation of Liability</h2>
+        <p>
+          To the maximum extent permitted by law, <strong>{COMPANY_NAME}</strong
+          > shall not be liable for indirect, incidental, special, consequential,
+          or punitive damages, or any loss of data, profits, or revenue, arising
+          from or related to your use of the Service.
+        </p>
+      </section>
+
+      <section data-animate-on-scroll>
+        <h2>12. Indemnification</h2>
+        <p>
+          You agree to indemnify and hold <strong>{COMPANY_NAME}</strong> harmless
+          from any claims, liabilities, damages, and expenses (including reasonable
+          attorneys’ fees) arising from your content or your misuse of the Service.
+        </p>
+      </section>
+
+      <section data-animate-on-scroll>
+        <h2>13. Governing Law</h2>
+        <p>
+          These Terms are governed by the laws of the jurisdiction where <strong
+            >{COMPANY_NAME}</strong
+          > is established, without regard to conflict-of-laws principles. Venue
+          and jurisdiction shall lie in the competent courts of that jurisdiction.
+        </p>
+      </section>
+
+      <section data-animate-on-scroll>
+        <h2>14. Contact</h2>
+        <p>
+          Questions about these Terms? Email <a
+            href="mailto:support@fennaai.com">support@fennaai.com</a
+          >.
+        </p>
+      </section>
+    </main>
   </div>
 </Layout>
+
+<style>
+  .terms-page {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  .page-header {
+    text-align: center;
+    padding: 4rem 1rem 2rem;
+  }
+  .page-header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+  }
+  .meta {
+    color: #6b7280;
+  }
+  .lede {
+    max-width: 46rem;
+    margin: 0.75rem auto 0;
+    color: #4b5563;
+  }
+  .content {
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 2rem 0 4rem;
+    display: grid;
+    gap: 2rem;
+  }
+  .content h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  [data-animate-on-scroll] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s ease;
+  }
+  [data-animate-on-scroll].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-color-scheme: dark) {
+    .meta,
+    .lede {
+      color: #9ca3af;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const els = document.querySelectorAll("[data-animate-on-scroll]");
+    const io = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-visible");
+            io.unobserve(e.target);
+          }
+        }),
+      { threshold: 0.1 }
+    );
+    els.forEach((el) => io.observe(el));
+  });
+</script>
